@@ -8,7 +8,7 @@
               v-model="valid"
               lazy-validation
             >
-                <v-slot name="content"></v-slot>
+              <v-slot name="content"></v-slot>
               <div class="text-right">
                 <v-btn color="secondary" @click="back()" class="mx-3">Back</v-btn>
                 <v-slot name="button"></v-slot> 
@@ -19,3 +19,12 @@
     </v-container>
   </div>
 </template>
+<script>
+export default {
+    data() {
+        return {
+
+        }
+    }
+}
+</script>

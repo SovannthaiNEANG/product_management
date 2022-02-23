@@ -2,7 +2,7 @@ export default [
     {
         id: 1,
         name: 'computer',
-        description: 'computer',
+        description: 'it is the good product for computer',
         price: 1000,
         quantity: 1000,
         image: require('@/assets/images/computer.jpg'),
@@ -10,7 +10,7 @@ export default [
     {
         id: 2,
         name: 'phone',
-        description: 'phone',
+        description: 'great product',
         price: 1000,
         quantity: 1000,
         image: require('@/assets/images/iphone.jpg'),
@@ -18,7 +18,7 @@ export default [
     {
         id: 3,
         name: 'bike',
-        description: 'bike',
+        description: 'it good product for health',
         price: 1000,
         quantity: 0,
         image: require('@/assets/images/bike.jpg'),
@@ -26,7 +26,7 @@ export default [
     {
         id: 4,
         name: 'motocycle',
-        description: 'motocycle',
+        description: 'it good for trip',
         price: 1000,
         quantity: 1000,
         image: require('@/assets/images/moto.jpg'),
