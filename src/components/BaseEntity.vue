@@ -25,6 +25,11 @@ export default {
         return {
 
         }
+    },
+    methods: {
+      back() {
+        this.$router.push({name: 'product'})
+      }
     }
 }
 </script>

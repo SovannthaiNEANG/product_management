@@ -5,37 +5,37 @@
         <v-col cols="12" md="12">
             <v-form
               ref="form"
-              v-model="valid"
               lazy-validation
             >
-              <v-text-field
+              <input-component
                 label="Name"
                 type="text"
                 :rules="nameRules"
                 v-model="users.name"
                 autocomplete="off"
-              ></v-text-field>
-              <v-text-field
+              >
+              </input-component>
+              <input-component
                 label="description"
                 :rules="[v => !!v || 'Description is required']"
                 type="text"
                 v-model="users.description"
                 autocomplete="off"
-              ></v-text-field>
-               <v-text-field
+              ></input-component>
+               <input-component
                 label="price"
                 type="number"
                 v-model="users.price"
                 :rules="[v => !!v || 'Price is required']"
                 autocomplete="off"
-              ></v-text-field>
-               <v-text-field
+              ></input-component>
+               <input-component
                 label="quantity"
                 type="number"
                 :rules="[v => !!v || 'Quantity is required']"
                 v-model="users.quantity"
                 autocomplete="off"
-              ></v-text-field>
+              ></input-component>
                <v-file-input
                 accept="image/*"
                 label="File input"
@@ -61,6 +61,7 @@
 </template>
 <script>
 import {mapActions} from 'vuex'
+import InputComponent from '@/components/InputComponent'
 export default {
   data() {
     return {
@@ -73,7 +74,6 @@ export default {
           image: null
       },
       selectFile: null,
-      valid: true,
       nameRules: [
         v => !!v || 'Name is required',
         v => (v && v.length <= 20) || 'Name must be less than 20 characters',
@@ -101,19 +101,17 @@ export default {
       }),
       onFileSelect(event) {
         this.selectFile = URL.createObjectURL(event)
-        console.log(this.selectFile)
       },
       _addNewProduct() {
           if(this.$refs.form.validate() == true){
             if (this.isUpdate) {
-              this.users.image = this.selectFile;
+              this.users.image = this.selectFile ?? this.users.image;
               this.updateProduct({
                 id: this.id,
                 payload: this.users
               })
             } else {
               this.users.image = this.selectFile;
-              console.log(this.users)
               this.users.id = this.uid;
               this.addNewProduct(this.users);
             }
@@ -123,6 +121,9 @@ export default {
       back() {
         this.$router.push({name: 'product'})
       },
+  },
+  components: {
+    InputComponent,
   }
 };
 </script>

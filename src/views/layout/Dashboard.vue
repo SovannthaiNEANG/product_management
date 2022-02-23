@@ -29,7 +29,7 @@
                 class="pt-5 mx-2"
                 v-model="active"
                 @change="isDark()"
-                label="Dark Mode"
+                :label="active ? 'Dark Mode' : 'Light Mode'"
             ></v-switch>
             <v-btn icon @click="logout()">
                 <v-icon>mdi-logout</v-icon>
