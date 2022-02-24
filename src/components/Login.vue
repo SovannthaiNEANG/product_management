@@ -6,8 +6,7 @@
           <v-flex xs12 sm8 md4>
             <v-card>
               <v-toolbar dark color="primary">
-                <v-spacer></v-spacer>
-                <v-toolbar-title center>Login form</v-toolbar-title>
+                <v-toolbar-title justify="center">Login</v-toolbar-title>
               </v-toolbar>
               <v-card-text>
                 <v-form ref="form" v-model="valid" lazy-validation>
@@ -51,9 +50,9 @@
 
 <script>
 export default {
+  name: "Login",
   data() {
     return {
-      name: "Login",
       username: null,
       password: null,
       valid: true,

@@ -6,39 +6,40 @@
           <v-expansion-panel-header>Search Option</v-expansion-panel-header>
           <v-expansion-panel-content>
                 <v-form>
-                  <v-text-field
+                  <input-component
                     name="name"
                     label="Name"
                     type="text"
                     v-model="filter.name"
                     autocomplete="off"
-                  ></v-text-field>
-                  <v-text-field
+                  ></input-component>
+                  <input-component
                     id="description"
                     name="description"
                     label="description"
                     type="description"
                     v-model="filter.description"
                     autocomplete="off"
-                  ></v-text-field>
-                  <v-text-field
+                  ></input-component>
+                  <input-component
                     name="price"
                     label="Price"
                     type="number"
                     v-model="filter.price"
                     autocomplete="off"
-                  ></v-text-field>
-                  <v-text-field
+                  ></input-component>
+                  <input-component
                     id="quantity"
                     name="quantity"
                     label="quantity"
                     type="number"
                     v-model="filter.quantity"
                     autocomplete="off"
-                  ></v-text-field>
+                  ></input-component>
                 </v-form>
               <v-card-actions>
                 <v-spacer></v-spacer>
+                <v-btn color="secondary" @click="clearSearch">Clear</v-btn>
                 <v-btn color="secondary" @click="getProductList">Search</v-btn>
               </v-card-actions>
           </v-expansion-panel-content>
@@ -96,7 +97,11 @@
 </template>
 <script>
 import { mapActions } from "vuex";
+import InputComponent from "@/components/InputComponent";
 export default {
+  components: {
+    InputComponent,
+  },
   data() {
     return {
       filter: {
@@ -126,6 +131,10 @@ export default {
     async getProductList() {
       this.products = await this.listProduct(this.filter);
     },
+    async clearSearch() {
+      this.filter = {}
+      this.products = await this.listProduct(this.filter);
+    }
   },
 };
 </script>

@@ -41,10 +41,10 @@ export default new Vuex.Store({
           isSearchDesciption =  product.description.includes(filter.description)
         }
         if (filter.price) {
-          isSearchPrice =  product.price.where(filter.price)
+          isSearchPrice =  String(product.price).includes(String(filter.price))
         }
         if (filter.quantity) {
-          isSearchQuantity =  product.quantity.where(filter.quantity)
+          isSearchQuantity =  String(product.quantity).includes(String(filter.quantity))
         }
         return isSearchName && isSearchDesciption && isSearchPrice && isSearchQuantity
       })
@@ -65,6 +65,5 @@ export default new Vuex.Store({
     }
   },
   getters: {
-
   }
 })
